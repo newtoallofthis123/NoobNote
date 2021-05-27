@@ -1,0 +1,56 @@
+body{
+    background-color: rgb(255, 255, 255);
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: 240px;
+    margin-right: 240px;
+    padding: 25px 25px 25px 25px;
+    border: chartreuse 5px;
+}
+
+html{
+    background-color: rgb(99, 98, 95);
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 36px;
+    text-align: center;
+    color: black;
+}
+
+.caption{
+    font-family: Cascadia Code;
+    font-size: 18px;
+    text-align: right;
+    color: chartreuse;
+}
+
+.content{
+    font-family: Cascadia Code;
+    font-size: 21;
+    text-align: center;
+    color: darkcyan;
+}
+
+.subtitle{
+    color: black;
+     font-family: Arial, Helvetica, sans-serif;
+      font-size: 18;
+}
+
+.click_button{
+    color: rgb(255, 255, 255);
+    background-color: rgb(40, 140, 206);
+    display: inline-block;
+    padding: 60px, 20px, 20px, 20px;
+    height: 50px;
+    width: 180px;
+    border-radius: 6px;
+    font-size: 24px;
+}
+
+.image{
+    align-items: center;
+    
+}
