@@ -34,40 +34,50 @@ Although it should be noted that even though NoobNote is not compiled, it has ma
 9. Option to toggle fullscreen
 
 ## Hotkeys:
+
 Ctrl + N - New File
+
 Ctrl + Shift + N - New Window
+
 Ctrl + O - Open File
+
 Ctrl + S - Save File
+
 Ctrl + Shift + S - Save File As
+
 Ctrl + C - Copy
+
 Ctrl + X - Cut
+
 Ctrl + V - Paste
+
 Ctrl + A - Select All
+
 Ctrl + T - Clear All
+
 Ctrl + Z - Undo
+
 Ctrl + Y - Redo
+
 Ctrl + B - Bold 
+
 Ctrl + I - Italic
+
 Ctrl + U - Underline
+
 Ctrl + F - Toggle Fullscreen
+
 Ctrl + L - Toggle Light Theme
+
 Ctrl + D - Toggle Dark Theme
 
 ## Details:
 Author: NoobScience
 
-
-
-
 [Website](https://newtoallofthis123.github.io/About)
-
-
-
 
 [NoobNote Website](https://newtoallofthis123.github.io/NoobNote)
 
 Hope You Enjoy it
-
-
 
                         NoobScience 2021
