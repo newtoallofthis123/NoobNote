@@ -54,3 +54,11 @@ h1 {
     align-items: center;
     
 }
+
+.install{
+    font-family: Cascadia Code;
+    font-size: 18px;
+    text-align: right;
+    color: chartreuse;
+}    
+    
