@@ -39,6 +39,9 @@ def main():
     global selectedText
     selectedText = False
 
+    global wrapVar
+    wrapVar = False
+
     global fontvar
     config = configparser.ConfigParser()        
     config.read("setting.ini")
@@ -48,6 +51,8 @@ def main():
     sizevar = Font["sizevar"]
     bgvar = Colors["bgvar"]
     fgvar = Colors["fgvar"]
+    selectbgvar = Colors["selectbgvar"]
+    selectfgvar = Colors["selectfgvar"]
 
     def newFile(e):
         text.delete("1.0", END)
@@ -320,13 +325,37 @@ def main():
 
     def settings(e):
         try:
-            text.delete(1.0, END)
-            doc = open("setting.ini")
-            gui.title("NoobNote Settings")
-            docContent = doc.read()
-            text.insert(END, docContent)
+            #text.delete(1.0, END)
+            #doc = open("setting.ini")
+            #gui.title("NoobNote Settings")
+            #docContent = doc.read()
+            #text.insert(END, docContent)
+            os.system("setting.ini")
+            gui.quit()
+            main()
         except:
             showerror("Settings", "setting.ini not Found")
+
+    def fontSettings(e):
+        text.config(font=(e, sizevar))
+
+    def sizeSettings(e):
+        text.config(font=e)
+
+    def word_wrap(e):
+        global wrapVar
+        if wrapVar:
+            text.config(wrap=WORD)
+            wrapVar = False
+        else:
+            wrapVar = True
+            text.config(wrap="none")
+
+    def insert_img():
+        img = filedialog.askopenfilename(initialdir='I:\github', title="Choose A File", filetypes=(("Image Files", "*.png"),))
+        image = PhotoImage(file=img)
+        insert_pos = text.index(INSERT)
+        text.image_create(insert_pos, image=image)
     
     def qr(e):
         try:
@@ -690,7 +719,7 @@ def main():
     textWidth = gui.winfo_screenwidth()
     textHeight = int(gui.winfo_screenheight())
 
-    text = Text(root, width=textWidth, height=textHeight, font=(fontvar, sizevar), selectbackground="#0618FF", selectforeground="white", undo=True, yscrollcommand=scroll_text.set, wrap="none", xscrollcommand=horizontal_scroll.set, fg=fgvar, bg=bgvar,)
+    text = Text(root, width=textWidth, height=textHeight, font=(fontvar, sizevar), selectbackground=selectbgvar, selectforeground=selectfgvar, undo=True, yscrollcommand=scroll_text.set, xscrollcommand=horizontal_scroll.set, fg=fgvar, bg=bgvar,)
     text.pack()
 
     menu = Menu(gui)
@@ -720,6 +749,8 @@ def main():
     editMenu.add_separator()
     editMenu.add_command(label="Undo", command=text.edit_undo)
     editMenu.add_command(label="Redo", command=text.edit_redo)
+    editMenu.add_separator()
+    editMenu.add_command(label="Add Image", command=insert_img)
 
     textFormatMenu = Menu(menu, tearoff=False)
     menu.add_cascade(label="Format", menu=textFormatMenu)
@@ -729,6 +760,20 @@ def main():
     textFormatMenu.add_separator()
     textFormatMenu.add_command(label="Encode in Base64", command=encode_64)
     textFormatMenu.add_command(label="Decode Base64 String", command=decode_64)
+    textFormatMenu.add_separator()
+    textFormatMenu.add_checkbutton(label="Word Wrap", command= lambda: word_wrap(False))
+
+    FontSettings = Menu(menu, tearoff=False)
+    menu.add_cascade(label="Font", menu=FontSettings)
+    FontSettings.add_command(label="Arial", command=lambda: fontSettings("Arial"))
+    FontSettings.add_command(label="Lucida Console", command=lambda: fontSettings("Lucida Console"))
+    FontSettings.add_command(label="Microsoft Sans Serif", command=lambda: fontSettings("Microsoft Sans Serif"))
+    FontSettings.add_command(label="Consolas", command=lambda: fontSettings("Consolas"))
+    FontSettings.add_command(label="Comic Sans MS", command=lambda: fontSettings("Comic Sans MS"))
+    FontSettings.add_command(label="Calibri", command=lambda: fontSettings("Calibri"))
+    FontSettings.add_command(label="Times New Roman", command=lambda: fontSettings("Times New Roman"))
+    FontSettings.add_command(label="Lucida Calligraphy", command=lambda: fontSettings("Lucida Calligraphy"))
+    FontSettings.add_command(label="Lucida Handwriting", command=lambda: fontSettings("Lucida Handwriting"))
 
     viewMenu = Menu(menu, tearoff=False)
     menu.add_cascade(label="View", menu=viewMenu)
@@ -741,6 +786,8 @@ def main():
     viewMenu.add_separator()
     viewMenu.add_command(label="Show Month Calendar", command=show_month_calendar)
     viewMenu.add_command(label="Show Year Calendar", command=show_year_calendar)
+    viewMenu.add_separator()
+    viewMenu.add_command(label="Options", command=lambda: settings(False))
     
     searchMenu = Menu(menu, tearoff=False)
     menu.add_cascade(label="Search", menu=searchMenu)
