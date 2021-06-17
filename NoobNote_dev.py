@@ -904,5 +904,39 @@ def main():
 
     gui.mainloop()
 
-if __name__ == '__main__':
-    main()
+def cli(e):
+    file = open(e, 'r')
+    content = file.read()
+    print(content)
+    file.close
+
+try:
+    if sys.argv[1] == "-r":
+        try:
+            os.system('clear')
+        except:
+            os.system('cls')
+        print("NoobNote CLI")
+        x = sys.argv[2]
+        cli(x)
+    elif sys.argv[1] == "-w" :
+        try:
+            name = sys.argv[2]
+            print("NoobNote CLI")
+            input_content = str(input("Enter Input:\n"))
+            file = open(name, 'w')
+            file.write(input_content)
+            file.close  
+        except:
+            print("NoobNote CLI")
+            input_content = str(input("Enter Input:\n"))
+            name = str(input("Enter name:\n"))
+            file = open(name, 'w')
+            file.write(input_content)
+            file.close 
+
+except:
+    if __name__ == '__main__':
+        main()
+
+
