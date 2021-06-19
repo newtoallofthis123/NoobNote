@@ -1,5 +1,5 @@
 # Application Name: NoobNote
-# Version: v.0.1
+# Version: v.1.1 Developer
 # Author: NoobScience
 # Author Website: https://newtoallofthis123.github.io/About
 # Application Docs and Trobule Shooting Website: https://newtoallofthis123.github.io/NoobNote
@@ -243,12 +243,12 @@ def main():
         #colorChoice = colorchooser.askcolor()[1]
         status_bar.config(text=f'Theme set to : light', bg="white", fg="black")
         gui.config(bg="white")
-        text.config(fg = "black",bg="white", selectbackground="#0618FF", selectforeground="white")
+        text.config(fg = "black",bg="white", selectbackground=selectbgvar, selectforeground=selectfgvar)
         
     def darkTheme(e):
         status_bar.config(text=f'Theme set to : dark', bg="white", fg="black")
         gui.config(bg="black")
-        text.config(fg="white",bg="black", selectbackground="yellow", selectforeground="black")
+        text.config(fg="white",bg="black", selectbackground="yellow", selectforeground="black", insertbackground="white")
     
     def relaxTheme(e):
         status_bar.config(text=f'Theme set to : relax', bg="#F2DD2D", fg="black")
@@ -273,8 +273,11 @@ def main():
         status_bar.config(text='All Text Deleted')
 
     def del_text(e):
-        text.delete(SEL_FIRST, SEL_LAST)
-        status_bar.config(text='Selected Text Deleted')
+        try:
+            text.delete(SEL_FIRST, SEL_LAST)
+            status_bar.config(text='Selected Text Deleted')
+        except:
+            showerror("Error", "No Text Selected to Search")
 
     def right_click_menu(e):
         rightClickmenu.tk_popup(e.x_root, e.y_root)
@@ -588,6 +591,7 @@ def main():
         year_cal = Tk()
         year_cal.resizable(False, False)
         year_cal.config(bg="black")
+        year_cal.iconbitmap('icon.ico')
         date_now = date.today()
         _month = int(date_now.month)
         _year = int(date_now.year)
@@ -604,13 +608,48 @@ def main():
         month_cal = Tk()
         month_cal.resizable(False, False)
         month_cal.config(bg="black")
+        month_cal.iconbitmap('icon.ico')
         date_now = date.today()
         _month = int(date_now.month)
         _year = int(date_now.year)
-        month_cal.title("Month Calendar for: " + str(_month) + "  " + str(_year))
+        month_cal.title("Year Calendar for: " + str(_month) + "  " + str(_year))
         cal = calendar.month(_year, _month)
         label = Label(month_cal, text=cal, fg="white", bg="black", font=("Cascadia Code", 18))
         label.pack()
+
+    def vim_():
+        global openFilename
+        if openFilename:
+            os.system(f'vim + {openFilename}')
+        else:
+            os.system("vim")
+
+    def nano_():
+        global openFilename
+        if openFilename:
+            os.system(f'nano + {openFilename}')
+        else:
+            os.system("nano")
+
+    def mintty_():
+        try:
+            os.system("cd resources")
+            os.system("mintty")
+        except:
+            print("Something went wrong, try again or report this issue")
+
+    def cmd_():
+        try:
+            os.system("cd")
+        except:
+            print("Something went wrong, try again or report this issue")
+
+    def bash_():
+        try:
+            os.system("cd resources")
+            os.system("bash")
+        except:
+            print("Something went wrong, try again or report this issue")
     
     def clock(e):
         try:
@@ -631,34 +670,52 @@ def main():
             print("ShadowGuy123")
                 
     def search_google():
-        content = text.selection_get()
-        url = 'https://www.google.com/search?hl=en&q=' + content
-        webbrowser.open(url)
+        try:
+            content = text.selection_get()
+            url = 'https://www.google.com/search?hl=en&q=' + content
+            webbrowser.open(url)
+        except:
+            showerror("Error", "No Text Selected to Search")
     
     def search_bing():
-        content = text.selection_get()
-        url = 'https://www.bing.com/search?q=' + content
-        webbrowser.open(url)
+        try:
+            content = text.selection_get()
+            url = 'https://www.bing.com/search?q=' + content
+            webbrowser.open(url)
+        except:
+            showerror("Error", "No Text Selected to Search")
         
     def search_yt():
-        content = text.selection_get()
-        url = 'https://www.youtube.com/results?search_query=' + content
-        webbrowser.open(url)
+        try:
+            content = text.selection_get()
+            url = 'https://www.youtube.com/results?search_query=' + content
+            webbrowser.open(url)
+        except:
+            showerror("Error", "No Text Selected to Search")
 
     def search_searx():
-        content = text.selection_get()
-        url = 'https://searx.info/search?q=' + content
-        webbrowser.open(url)
+        try:
+            content = text.selection_get()
+            url = 'https://searx.info/search?q=' + content
+            webbrowser.open(url)
+        except:
+            showerror("Error", "No Text Selected to Search")
     
     def search_github():
-        content = text.selection_get()
-        url = 'https://github.com/search?q=' + content
-        webbrowser.open(url)
+        try:
+            content = text.selection_get()
+            url = 'https://github.com/search?q=' + content
+            webbrowser.open(url)
+        except:
+            showerror("Error", "No Text Selected to Search")
     
     def search_vtip():
-        content = text.selection_get()
-        url = 'https://www.virustotal.com/gui/search/' + content
-        webbrowser.open(url)
+        try:
+            content = text.selection_get()
+            url = 'https://www.virustotal.com/gui/search/' + content
+            webbrowser.open(url)
+        except:
+            showerror("Error", "No Text Selected to Search")
         
     def encode_64():
         try:
@@ -767,6 +824,7 @@ def main():
     menu.add_cascade(label="Font", menu=FontSettings)
     FontSettings.add_command(label="Arial", command=lambda: fontSettings("Arial"))
     FontSettings.add_command(label="Lucida Console", command=lambda: fontSettings("Lucida Console"))
+    FontSettings.add_command(label="Cascadia Code", command=lambda: fontSettings("Cascadia Code"))
     FontSettings.add_command(label="Microsoft Sans Serif", command=lambda: fontSettings("Microsoft Sans Serif"))
     FontSettings.add_command(label="Consolas", command=lambda: fontSettings("Consolas"))
     FontSettings.add_command(label="Comic Sans MS", command=lambda: fontSettings("Comic Sans MS"))
@@ -786,6 +844,10 @@ def main():
     viewMenu.add_separator()
     viewMenu.add_command(label="Show Month Calendar", command=show_month_calendar)
     viewMenu.add_command(label="Show Year Calendar", command=show_year_calendar)
+    viewMenu.add_separator()
+    viewMenu.add_command(label="Open Mitty", command=mintty_)
+    viewMenu.add_command(label="Open Cmd", command=cmd_)
+    viewMenu.add_command(label="Open Bash", command=bash_)
     viewMenu.add_separator()
     viewMenu.add_command(label="Options", command=lambda: settings(False))
     
@@ -807,6 +869,9 @@ def main():
     toolsMenu.add_command(label="Generate sha256 Hash", command=hash_sha256)
     toolsMenu.add_command(label="Generate md5 Hash", command=hash_md5)
     toolsMenu.add_command(label="Generate sha1 Hash", command=hash_sha1)
+    toolsMenu.add_separator()
+    toolsMenu.add_command(label="Edit with Vim", command=vim_)
+    toolsMenu.add_command(label="Edit with Nano", command=nano_)
 
     colorMenu = Menu(menu, tearoff=False)
     menu.add_cascade(label="Color", menu=colorMenu)
@@ -855,6 +920,9 @@ def main():
     rightClickmenu.add_separator()
     rightClickmenu.add_command(label="Insert Time", command= lambda: timeDate(False))
     rightClickmenu.add_command(label="Insert Month Calendar", command= lambda: month_calendar(False))
+    rightClickmenu.add_separator()
+    rightClickmenu.add_command(label="Edit with Vim", command=vim_)
+    rightClickmenu.add_command(label="Edit with Nano", command=nano_)
     rightClickmenu.add_separator()
     rightClickmenu.add_command(label="Toggle FullScreen", command= lambda: fullScreen(False))
     rightClickmenu.add_separator()

@@ -1,5 +1,5 @@
-                                                                              NoobNote
-                                                        											   -by NoobScience 2021
+NoobNote
+-by NoobScience 2021
 NoobNote is a beginner friendly project for python.
 You have to have python  installed to use NoobNote
 It is a almost perfect clone of Notepad. 
@@ -56,6 +56,7 @@ Website: https://newtoallofthis123.github.io/About
 NoobNote Website: https://newtoallofthis123.github.io/NoobNote
 
 Hope You Enjoy it
+
 
 
 
