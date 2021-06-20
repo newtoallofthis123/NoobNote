@@ -1095,6 +1095,20 @@ def cli(e):
         console = Console()
         console.print(syntax)
         file.close
+    if e.endswith(".txt"):
+        lang = "text"
+        my_code = content
+        syntax = Syntax(my_code, lang, theme="monokai", line_numbers=True)
+        console = Console()
+        console.print(syntax)
+        file.close
+    else:
+        lang = "text"
+        my_code = content
+        syntax = Syntax(my_code, lang, theme="monokai", line_numbers=True)
+        console = Console()
+        console.print(syntax)
+        file.close
 
 try:
     if sys.argv[1] == "-r":
