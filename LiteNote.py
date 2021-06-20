@@ -1,5 +1,5 @@
-# Application Name: NoobNote
-# Version: v.1.1 Developer
+# Application Name: NoobNote-Lite
+# Version: v.1.1 Lite
 # Author: NoobScience
 # Author Website: https://newtoallofthis123.github.io/About
 # Application Docs and Trobule Shooting Website: https://newtoallofthis123.github.io/NoobNote
@@ -15,6 +15,7 @@ from tkinter.messagebox import showinfo
 from tkinter.messagebox import askquestion
 from tkinter.messagebox import showerror
 from tkinter.messagebox import askokcancel
+import tkinter.ttk as ttk
 import webbrowser
 import configparser
 try:
@@ -26,9 +27,9 @@ except:
 
 def main():
     gui = Tk()
-    gui.title("NoobNote")
+    gui.title("NoobNote-Lite")
     gui.iconbitmap('icon.ico')
-    gui.geometry("600x600")
+    gui.geometry("680x680")
     global fsVar
     fsVar = False
     gui.attributes('-fullscreen',fsVar)
@@ -126,7 +127,7 @@ def main():
                 status_bar.config(text='cut selected text')
                 text.delete("sel.first", "sel.last")
                 gui.clipboard_clear()
-                gui.clipboard_append(selectedText)	
+                gui.clipboard_append(selectedText)  
 
     def copyText(e):
         global selectedText
@@ -325,7 +326,11 @@ def main():
         main()
 
     def quit1(e):
-        gui.quit()
+        choice = askquestion("Save the File", "The Changes to the above file are not save. Want to save it?")
+        if choice == "yes":
+            saveFile(False)
+        elif choice == "no":
+            gui.quit()
 
     def settings(e):
         try:
@@ -342,6 +347,9 @@ def main():
 
     def fontSettings(e):
         text.config(font=(e, sizevar))
+
+    def fontsizeSetting(e, f):
+        text.config(font=(e, f))
 
     def zoomIn(e):
         global sizevar
@@ -661,48 +669,50 @@ def main():
             os.system("bash")
         except:
             print("Something went wrong, try again or report this issue")
-
     def run(e):
-        if openFilename.endswith(".py"):
-            try:
-                os.system("C:/Users/User/AppData/Local/Programs/Python/Python39/python.exe " + openFilename)
-            except:
-                showerror("Python Not Found", "Python is not found in your path. Add it or try reinstalling or installing python")
-        if openFilename.endswith(".html"):
-            try:
-                folder = filedialog.askdirectory(initialdir='I:\github', title="Choose A folder",)
-                os.system("cd..")
-                os.system("cd " + folder)
-                os.system("start https://localhost:8000")
-                os.system("python -m http.server")
-            except:
-                showerror("Something went wrong", "SomeThing went wrong. Try agian or report the issue at https://github.com/newtoallofthis123/NoobNote/issues")
-        if openFilename.endswith(".java"):
-            try:
-                os.system("java " + openFilename)
-            except:
-                showerror("Something went wrong", "Check your code and check if java is in your system path")
-        if openFilename.endswith(".rb"):
-            try:
-                os.system("ruby " + openFilename)
-            except:
-                showerror("Something went wrong", "Check your code and check if ruby is in your system path")
-        if openFilename.endswith(".bat"):
-            try:
-                os.system(openFilename)
-            except:
-                showerror("Something went wrong", "Check your code or are you sure you are running on windows?")
-        if openFilename.endswith(".sh"):
-            try:
-                os.system("cd resources")
-                os.system("bash " + openFilename)
-            except:
-                showerror("Something went wrong", "Check your code and check if bash is in your system path")
-        if openFilename.endswith(".js"):
-            try:
-                os.system("node " + openFilename)
-            except:
-                showerror("Something went wrong", "Check your code and check if node is in your system path")
+        try:
+            if openFilename.endswith(".py"):
+                try:
+                    os.system("C:/Users/User/AppData/Local/Programs/Python/Python39/python.exe " + openFilename)
+                except:
+                    showerror("Python Not Found", "Python is not found in your path. Add it or try reinstalling or installing python")
+            if openFilename.endswith(".html"):
+                try:
+                    folder = filedialog.askdirectory(initialdir='I:\github', title="Choose A folder",)
+                    os.system("cd..")
+                    os.system("cd " + folder)
+                    os.system("start https://localhost:8000")
+                    os.system("python -m http.server")
+                except:
+                    showerror("Something went wrong", "SomeThing went wrong. Try agian or report the issue at https://github.com/newtoallofthis123/NoobNote/issues")
+            if openFilename.endswith(".java"):
+                try:
+                    os.system("java " + openFilename)
+                except:
+                    showerror("Something went wrong", "Check your code and check if java is in your system path")
+            if openFilename.endswith(".rb"):
+                try:
+                    os.system("ruby " + openFilename)
+                except:
+                    showerror("Something went wrong", "Check your code and check if ruby is in your system path")
+            if openFilename.endswith(".bat"):
+                try:
+                    os.system(openFilename)
+                except:
+                    showerror("Something went wrong", "Check your code or are you sure you are running on windows?")
+            if openFilename.endswith(".sh"):
+                try:
+                    os.system("cd resources")
+                    os.system("bash " + openFilename)
+                except:
+                    showerror("Something went wrong", "Check your code and check if bash is in your system path")
+            if openFilename.endswith(".js"):
+                try:
+                    os.system("node " + openFilename)
+                except:
+                    showerror("Something went wrong", "Check your code and check if node is in your system path")
+        except:
+            showerror("Error", "Are you sure you are running a supported type? Check the docs for more info")
     
     def clock(e):
         try:
@@ -816,12 +826,13 @@ def main():
         hash_hexa = hash_str.hexdigest()
         text.insert(END, hash_hexa)
 
-    toolbar = Frame(gui)
-    toolbar.pack()
+    toolbar_color = "red"
+
+    toolbar = Frame(gui, bg=toolbar_color, borderwidth=0)
+    toolbar.pack(fill=X)
 
     root = Frame(gui)
     root.pack()
-
 
     scroll_text = Scrollbar(root,)
     scroll_text.pack(side=RIGHT, fill=Y)
@@ -832,8 +843,72 @@ def main():
     textWidth = gui.winfo_screenwidth()
     textHeight = int(gui.winfo_screenheight())
 
-    text = Text(root, width=textWidth, height=textHeight, font=(fontvar, sizevar), selectbackground=selectbgvar, selectforeground=selectfgvar, undo=True, yscrollcommand=scroll_text.set, xscrollcommand=horizontal_scroll.set, fg=fgvar, bg=bgvar,)
+    text = Text(root, width=textWidth, height=textHeight, font=(fontvar, sizevar), borderwidth=0,selectbackground=selectbgvar, selectforeground=selectfgvar, undo=True, yscrollcommand=scroll_text.set, xscrollcommand=horizontal_scroll.set, fg=fgvar, bg=bgvar,)
     text.pack()
+
+    openFile_img = PhotoImage(file="resources/icons/folder_open.png") 
+    newFile_img = PhotoImage(file="resources/icons/add.png")
+    saveFile_img = PhotoImage(file="resources/icons/save.png")
+    cut_img = PhotoImage(file="resources/icons/content_cut.png")
+    copy_img = PhotoImage(file="resources/icons/content_copy.png")  
+    paste_img = PhotoImage(file="resources/icons/content_paste.png")
+    selectAll_img = PhotoImage(file="resources/icons/copy_all.png")
+    delete_img = PhotoImage(file="resources/icons/clear.png")  
+    redo_img = PhotoImage(file="resources/icons/redo.png") 
+    undo_img = PhotoImage(file="resources/icons/undo.png") 
+    search_img = PhotoImage(file="resources/icons/search.png") 
+    add_img = PhotoImage(file="resources/icons/play_arrow.png") 
+    color_img = PhotoImage(file="resources/icons/color_lens.png") 
+    setting_img = PhotoImage(file="resources/icons/settings.png") 
+    dark_img = PhotoImage(file="resources/icons/dark_mode.png") 
+    light_img = PhotoImage(file="resources/icons/light_mode.png")
+    NS_img = PhotoImage(file="resources/icons/flash_on.png")  
+    zoomIn_img = PhotoImage(file="resources/icons/zoom_in.png")
+    zoomOut_img = PhotoImage(file="resources/icons/zoom_out.png")
+    quit_img = PhotoImage(file="resources/icons/cancel_black.png")
+    full_screen_img = PhotoImage(file="resources/icons/open_in_full.png")
+
+    newfile_tool = Button(toolbar, image=newFile_img, bg=toolbar_color,borderwidth=0,command=lambda: newFile(False))
+    newfile_tool.grid(row=0, column=0, padx=2)
+    openfile_tool = Button(toolbar, image=openFile_img, bg=toolbar_color ,borderwidth=0,command=lambda: openFile(False))
+    openfile_tool.grid(row=0, column=1, padx=2)
+    savefile_tool = Button(toolbar, image=saveFile_img, bg=toolbar_color,borderwidth=0,command=lambda: saveFile(False))
+    savefile_tool.grid(row=0, column=2, padx=2)
+    sep = Label(toolbar, bg=toolbar_color,text="").grid(row=0, column=3, padx=5)
+    cut_tool = Button(toolbar, image=cut_img, bg=toolbar_color,borderwidth=0,command=lambda: cutText(False))
+    cut_tool.grid(row=0, column=4, padx=2)
+    copy_tool = Button(toolbar, image=copy_img, bg=toolbar_color,borderwidth=0,command=lambda: copyText(False))
+    copy_tool.grid(row=0, column=5, padx=2)
+    paste_tool = Button(toolbar, image=paste_img, bg=toolbar_color,borderwidth=0,command=lambda: pasteText(False))
+    paste_tool.grid(row=0, column=6, padx=2)
+    sep1 = Label(toolbar, bg=toolbar_color,text="").grid(row=0, column=7, padx=5)
+    run_tool = Button(toolbar, image=add_img, bg=toolbar_color,borderwidth=0,command=search_bing)
+    run_tool.grid(row=0, column=8, padx=5)
+    sep2 = Label(toolbar, bg=toolbar_color,text="").grid(row=0, column=9, padx=5)
+    redo_tool = Button(toolbar, image=undo_img, bg=toolbar_color,borderwidth=0,command=text.edit_redo)
+    redo_tool.grid(row=0, column=10, padx=2)
+    undo_tool = Button(toolbar, image=redo_img, bg=toolbar_color,borderwidth=0,command=text.edit_undo)
+    undo_tool.grid(row=0, column=11, padx=2)
+    sep3 = Label(toolbar, bg=toolbar_color,text="").grid(row=0, column=12, padx=5)
+    _fontList = ["Font", "Arial", "Consolas", "Cascadia Code", "Calibri", "Lucida Handwriting", "Lucida Calligraphy", "Times New Roman", "Helvetica"]
+    value = StringVar(gui)
+    value.set("Select Font")
+    font_tool = ttk.OptionMenu(toolbar, value, *_fontList,)
+    font_tool.grid(row=0, column=13)
+    fontsize_tool = Spinbox(toolbar, from_=6, to=128, width=6, bg=toolbar_color,)
+    fontsize_tool.grid(row=0, column=14,padx=5,)
+    selectfont_tool = Button(toolbar, text="Select", bg=toolbar_color,borderwidth=0, command=lambda: fontsizeSetting(value.get(), int(fontsize_tool.get())))
+    selectfont_tool.grid(row=0, column=15, padx=5)
+    sep4 = Label(toolbar, bg=toolbar_color,text="").grid(row=0, column=16, padx=5)
+    redo_tool = Button(toolbar, image=zoomIn_img, bg=toolbar_color,borderwidth=0,command=lambda: zoomIn(False))
+    redo_tool.grid(row=0, column=17, padx=2)
+    undo_tool = Button(toolbar, image=zoomOut_img, bg=toolbar_color,borderwidth=0,command=lambda: zoomOut(False))
+    undo_tool.grid(row=0, column=18, padx=2)
+    undo_tool = Button(toolbar, image=full_screen_img, bg=toolbar_color,borderwidth=0,command=lambda: fullScreen(False))
+    undo_tool.grid(row=0, column=19, padx=2)
+    sep5 = Label(toolbar, bg=toolbar_color,text="").grid(row=0, column=20, padx=5)
+    quit_tool = Button(toolbar, image=delete_img, bg=toolbar_color,borderwidth=0,command=lambda: quit1(False))
+    quit_tool.grid(row=0, column=21, padx=2)
 
     menu = Menu(gui)
     gui.config(menu=menu)
@@ -841,7 +916,7 @@ def main():
     fileMenu = Menu(menu, tearoff=False)
     menu.add_cascade(label="File", menu=fileMenu)
     fileMenu.add_command(label="New", command=lambda: newFile(False))
-    fileMenu.add_command(label="New Window", command=lambda: newWinmain(False))
+    #fileMenu.add_command(label="New Window", command=lambda: newWinmain(False))
     fileMenu.add_command(label="Open", command=lambda: openFile(False))
     fileMenu.add_command(label="Save", command=lambda: saveFile(False))
     fileMenu.add_command(label="SaveAs", command=lambda: saveAs(False))
@@ -979,6 +1054,8 @@ def main():
     rightClickmenu.add_command(label="Clear All", command= lambda: clearAll(False))
     rightClickmenu.add_command(label="Delete Selected", command= lambda: del_text(False))
     rightClickmenu.add_separator()
+    rightClickmenu.add_command(label="Run", command= lambda: run(False))
+    rightClickmenu.add_separator()
     rightClickmenu.add_command(label="Insert Time", command= lambda: timeDate(False))
     rightClickmenu.add_command(label="Insert Month Calendar", command= lambda: month_calendar(False))
     rightClickmenu.add_separator()
@@ -1026,12 +1103,11 @@ def main():
     gui.bind('<Control-t>', qr)
     gui.bind('<Control-m>', month_calendar)
     gui.bind('<Control-y>', year_calendar)
-    gui.bind('<Control-Key-*>', clock)
+    gui.bind('<Control-r>', clock)
     gui.bind('<Control-w>', timeDate)
     gui.bind('<Button-3>', right_click_menu)
     gui.bind('<Control-Key-plus>', zoomIn)
     gui.bind('<Control-Key-minus>', zoomOut)
-    gui.bind('<Control-r>', run)
 
     gui.mainloop()
 
@@ -1095,7 +1171,6 @@ def cli(e):
         console = Console()
         console.print(syntax)
         file.close
-
 try:
     if sys.argv[1] == "-r":
         try:
