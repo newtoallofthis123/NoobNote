@@ -1,0 +1,55 @@
+NoobNote
+
+Hot-Keys:
+1. Crtl+O - Open File
+2. Crtl+N - New File
+3. Crtl+S - Save File
+4. Crtl+Shift+S - Save File As
+5. Crtl+X - Cut Text
+6. Crtl+C - Copy Text
+7. Crtl+P - Paste Text
+8. Crtl+B - Bold
+9. Crtl+I - Italic
+10. Crtl+U - Underline
+11. Crtl+G - Clear All
+12. Crtl+A - Select All
+13. Delete - Delete Selected
+14. Crtl+P - Print File
+15. Crtl+T - Qr-Code Generator
+16. Crtl+M - Month Calendar
+17. Crtl+Y - Year Calendar
+18. Crtl+R - Runner
+19. Crtl+F - Find
+20. Crtl+L - Light Theme
+21. Crtl+D - Dark Theme
+22. Crtl+J - Clock
+23. Crtl+Q - Quit
+24. Crtl++ - Zoom In
+25. Crtl+- - Zoom Out
+26. F11 - Toggle FullScreen
+27. Crtl+H - Show Help
+28. Crtl+W - Insert Date and Time
+29. F2 - Show About
+30. F5 - Run File
+
+Runner Commands:
+1. !open - Open File
+2. !new - New File
+3. !save - Save File
+4. !saveas - Save File As
+5. !theme [options] - switch between light, dark and relax theme
+6. !options - Show Settings Gui
+7. !settings - Show Settings raw ini
+8. !quit - Quit
+9. !g [search term] - search google
+10. !b [search term] - search bing
+11. !ddg [search term] - search duckduckgo
+12. !yt [search term] - search youtube
+13. !s [search term] - search searx
+14. !web [website] - open any website
+15. !cmd [command] - run system commands
+16. !file [file] - open file directly
+17. !help - show help
+18. !m [email] - Email someone
+19. !run - run file
+20. !h - Show Available hotKey's and Runner Commands
