@@ -1,5 +1,5 @@
 # Application Name: NoobNote
-# Version: v.0.1
+# Version: v.1.1
 # Author: NoobScience
 # Author Website: https://newtoallofthis123.github.io/About
 # Application Docs and Trobule Shooting Website: https://newtoallofthis123.github.io/NoobNote
@@ -295,6 +295,10 @@ def main():
 
     def quit1(e):
         gui.quit()
+
+    def check_for_updates(e):
+        import update_check
+        update_check.check_updates()
     
     def qr(e):
         try:
@@ -708,6 +712,8 @@ def main():
     aboutMenu.add_command(label="About NoobNote", command=showInfo)
     aboutMenu.add_command(label="NoobScience Website", command=openNoobweb)
     aboutMenu.add_command(label="Some of my other projects", command=projects)
+    aboutMenu.add_separator()
+    aboutMenu.add_command(label="Check for Updates", command=lambda: check_for_updates(False))
     aboutMenu.add_separator()
     aboutMenu.add_command(label="NoobNote Website", command=openWeb)
     aboutMenu.add_command(label="Fork NoobNote", command=source)

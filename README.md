@@ -29,6 +29,12 @@ NoobNote has a few features from these only. NoobNote is the model on top of whi
 8. Month and Year Calendars
 9. Insert Time support
 10. Run File Options and Support
+11. Highly Customizable
+12. Built in Themes
+13. Recent files menu
+14. Quick Clock Widget
+15. Distraction Free Mode
+16. Compact Mode
 
 ## Hot-Keys:
 
@@ -87,12 +93,14 @@ NoobNote has a few features from these only. NoobNote is the model on top of whi
 20. !h - Show Available hotKey's and Runner Commands
 
 ## Installtion:
+
 1. Raw Python Files: If You go with this, be sure to have all the files listed in Files Included in Standard Install(see below)
 2. Standard Executable in Zip File : The Way to download and install NoobNote, just unzip the file to your desired location
 3. Executable Setup.exe : Only For Begginners, sometimes can go wrong, still in Development, Zip File Method Recommended, No Shortcut creation among many other problems
 4. OneFile with all Dependencies: Heavy but Portable, not recommended
 
 ## Files Included in Standard Install:
+
 1. icons for toolbar(LiteNote only) - resources/icons
 2. README.md - For Reference
 3. MODULE.md - For the NoobNote functions reference
@@ -105,6 +113,9 @@ NoobNote has a few features from these only. NoobNote is the model on top of whi
 10. compile.sh, compile.bat - For compiling the raw python files to .exe, only for people who use python version of NoobNote
 11. LICENSE - The MIT License
 12. hotkeys.txt - Lists all the Hotkeys, used for inserting it in NoobNote
+13. database.db - Stores Recent Files and other functions for Sqlite3
+14. BUILDING.md
+15. compile.bat
 
 ## Things That Could Go Wrong:
 

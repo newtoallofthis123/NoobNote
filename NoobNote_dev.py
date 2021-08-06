@@ -1,5 +1,5 @@
 # Application Name: NoobNote-Dev
-# Version: v.2.1 Dev
+# Version: v.3.1 Dev
 # Author: NoobScience
 # Author Website: https://newtoallofthis123.github.io/About
 # Application Docs and Trobule Shooting Website: https://newtoallofthis123.github.io/NoobNote
@@ -13,7 +13,7 @@ from tkinter import font
 from tkinter import colorchooser
 from tkinter.messagebox import showinfo
 from tkinter.messagebox import askquestion
-from tkinter.messagebox import showerror
+from tkinter.messagebox import showerror, showwarning
 from tkinter.messagebox import askokcancel
 import tkinter.ttk as ttk
 import webbrowser
@@ -22,6 +22,7 @@ try:
     import os, sys
     import win32print
     import win32api
+    import subprocess
 except:
     pass
 
@@ -58,12 +59,12 @@ def main():
     selectbgvar = Colors["selectbgvar"]
     selectfgvar = Colors["selectfgvar"]
     toolbar_color = Colors["toolbar_color"]
-    gui.title("NoobNote-Dev")
+    gui.title(titlevar)
     gui.iconbitmap(iconvar)
 
     def newFile(e):
         text.delete("1.0", END)
-        gui.title(f'New File - NoobNote-Dev')
+        gui.title(f'New File - {titlevar}')
 
     def openFile(e):
         try:
@@ -73,7 +74,7 @@ def main():
                 global openFilename
                 openFilename = file
             name = file
-            gui.title(f'{name} - NoobNote-Dev')
+            gui.title(f'{name} - {titlevar}')
 
             file = open(file, 'r')
             content = file.read()
@@ -90,7 +91,7 @@ def main():
             file = filedialog.asksaveasfilename(defaultextension=".*", initialdir=current_dir, title="Save file as", filetypes=(("All Files", "*.*"),("Text Files", "*.txt"), ("Python Files", "*.py"), ("Config Files", "*.ini") ,("Ruby Files", "*.rb"), ("HTML Files", "*.html"), ("JSON Files", "*.json"), ("Javascript Files", "*.js"), ("CSS Files", "*.css"), ("Shell Files", "*.sh"), ("Batch Files", "*.bat")))
             if file:
                 name = file
-                gui.title(f'{name} - NoobNote-Dev')
+                gui.title(f'{name} - {titlevar}')
 
                 file = open(file, 'w')
                 file.write(text.get(1.0, END))
@@ -244,7 +245,11 @@ def main():
     def relaxTheme(e):
         gui.config(bg="#F2DD2D")
         text.config(fg="black",bg="#F2DD2D", selectbackground="#FA9133", selectforeground="black", insertbackground="black")
-        
+       
+    def hackerTheme():
+        gui.config(bg="#282923")
+        text.config(fg="#A6E22B",bg="#282923", selectbackground="#CCFF87", selectforeground="black", insertbackground="#A6E22B")
+
     def timeDate(e):
         from datetime import datetime
         from datetime import date
@@ -1050,11 +1055,15 @@ def main():
             except:
                 pass
             try:
+                music_gui.destroy()
+            except:
+                pass
+            try:
                 gui.destroy()
             except:
                 pass
         set_gui = Tk()
-        set_gui.title("Settings - NoobNote-Dev")
+        set_gui.title("Settings - LiteNote")
         set_gui.iconbitmap("icon.ico")
         set_gui.geometry("400x280")
         set_root = Frame(set_gui,)
@@ -1113,7 +1122,7 @@ def main():
         runner_gui.iconbitmap('icon.ico')
         runner_gui.title("Runner")
         runner_gui.resizable(False, False)
-        runner_gui.geometry("300x40")
+        runner_gui.geometry("300x40+200+200")
         def right_click_menu(e):
             runner_rightClickmenu.tk_popup(e.x_root, e.y_root)
         def run_command(e):
@@ -1138,7 +1147,7 @@ def main():
                 text.delete("1.0", END)
                 file = 'README.txt'
                 name = file
-                gui.title(f'{name} - NoobNote-Dev')
+                gui.title(f'{name} - {titlevar}')
                 file = open(file, 'r')
                 content = file.read()
                 text.insert(END, content)
@@ -1178,7 +1187,7 @@ def main():
                 text.delete("1.0", END)
                 file = actual_content
                 name = file
-                gui.title(f'{name} - NoobNote-Dev')
+                gui.title(f'{name} - {titlevar}')
                 file = open(file, 'r')
                 content = file.read()
                 text.insert(END, content)
@@ -1200,15 +1209,27 @@ def main():
                     darkTheme(False)
                 if actual_content == "relax":
                     relaxTheme(False)
+                if actual_content == "hacker":
+                    hackerTheme(False)
             if command_ == "!h":
-                    text.delete("1.0", END)
-                    file = "hotkeys.txt"
-                    name = file
-                    gui.title(f'HotKeys - NoobNote-Dev')
-                    file = open(file, 'r')
-                    content = file.read()
-                    text.insert(END, content)
-                    file.close()
+                text.delete("1.0", END)
+                file = "hotkeys.txt"
+                name = file
+                gui.title(f'HotKeys - {titlevar}')
+                file = open(file, 'r')
+                content = file.read()
+                text.insert(END, content)
+                file.close()
+            if command_ == "!qr":
+                qr(False)
+            if command_ == "!terminal":
+                mini_terminal()
+            if command_ == "!about":
+                about_()
+            if command_ == "!joke":
+                random_joke()
+            if command_ == "!read":
+                read_all()
             runner_gui.destroy()
         command_input_label = Label(runner_gui, font=("Cascadia Code", 12), text="Command: ",fg="black", bg="#F0F0F0")
         command_input_label.grid(row=0, column=0)
@@ -1238,18 +1259,56 @@ def main():
             return False
         if search(content_list, find_input.get()) == True:
             print("Hello World")
+
+    def mini_terminal(e):
+        terminal = Tk()
+        terminal.title("Mini Terminal")
+        terminal.iconbitmap("icon.ico")
+        terminal.geometry("250x60")
+        terminal.resizable(False, False)
+        def terminal_run(e):
+            command_given = str(terminal_command.get())
+            terminal_command.delete(0,END)
+            try:
+                os.system(command_given)
+                try:
+                    os.system("pause")
+                except:
+                    pass
+            except:
+                showerror("Something went wrong", "Something went wrong. Try again with a correct system command")
+        terminal_title = Label(terminal, bg="#F0F0F0", fg="black", borderwidth=0, font=("Cascadia Code", 14), text="Enter System Command")
+        terminal_title.pack()
+        terminal_command = Entry(terminal, bg="white", fg="black", borderwidth=0, width=30,font=("Cascadia Code", 12))
+        terminal_command.pack()
+        terminal_command.bind("<Return>", terminal_run)        
+        terminal.mainloop()
+
+    def read_selected():
+        import pyttsx3
+        engine = pyttsx3.init()
+        selected_text_to_read = text.selection_get()
+        engine.say(selected_text_to_read)
+        engine.runAndWait()
+    def read_all():
+        import pyttsx3
+        engine = pyttsx3.init()
+        selected_text_to_read = text.get(1.0, END)
+        engine.say(selected_text_to_read)
+        engine.runAndWait()
+
     def about_():
-        about = f'NoobNote-Dev is a simple Notepad written purely in python with tkinter.\nIt is very feature rich though being light weight at the same time.\nNoobNote-Dev is a beginner friendly project and is very easy to understand.\nIt is registered under the MIT License, Hence you are free to use it.\nTo learn more on how to contribute, see CONTRIBUTE.md and README.md\nTo learn to use NoobNote-Dev functions, see MODULE.md or pypi.org/NoobNote\n'
+        about = f'{titlevar} is a simple Notepad written purely in python with tkinter.\nIt is very feature rich though being light weight at the same time.\n{titlevar} is a beginner friendly project and is very easy to understand.\nIt is registered under the MIT License, Hence you are free to use it.\nTo learn more on how to contribute, see CONTRIBUTE.md and README.md\nTo learn to use {titlevar} functions, see MODULE.md or pypi.org/NoobNote\n'
         author = f'I wrote NoobNote to learn tkinter(python gui module) and python.\nI also wanted to have a good alternative to Notepad, but not notepad++.\nHence NoobNote, it is as light weight, fast and as simple as Notepad,\nbut at the same time, a bit more feature rich, private and secure.\nNoobNote took a considerable amount of time and effort to make.\nso, if you want to contribute, be sure to check out CONTRIBUTE.md\n'
         details = f'Author: NoobScience\nProjectName: NoobNote\nWebsite: tinu.be/NoobNote\nAuthor Website: tinu.be/About\nGithub: @newtoallofthis123\n'
         about_gui = Tk()
-        about_gui.title(f'About NoobNote-Dev')
+        about_gui.title(f'About {titlevar}')
         about_gui.iconbitmap(f'{iconvar}')
-        about_gui.geometry("810x600")
+        about_gui.geometry("780x600")
         about_gui.resizable(False, False)
         def quit_3(e):
             about_gui.destroy()
-        title = Label(about_gui, font=("Cascadia Code", 18), fg="black", bg="#F0F0F0", text="NoobNote-Dev")
+        title = Label(about_gui, font=("Cascadia Code", 18), fg="black", bg="#F0F0F0", text=titlevar)
         title.pack()
         subtitle = Label(about_gui, font=("Lucida Handwriting", 10), fg="black", bg="#F0F0F0", text="A Simple Light Weight NotePad, by NoobScience\n")
         subtitle.pack()
@@ -1279,11 +1338,34 @@ def main():
         about_NoobNote_github_btn.grid(row=0, column=3)
         about_gui.bind('<Return>', quit_3)
 
-    toolbar = Frame(gui, bg=toolbar_color, borderwidth=0)
-    toolbar.pack(fill=X)
+    # toolbar = Frame(gui, bg=toolbar_color, borderwidth=0)
+    # toolbar.pack(fill=X)
 
-    root = Frame(gui,)
-    root.pack()
+    root = Frame(gui, bg="white")
+    root.pack(fill=X,)
+
+    def random_joke():
+        import pyjokes
+        joke_gui = Tk()
+        joke_gui.title("Joke")
+        joke_gui.geometry('800x120')
+        joke_gui.config(bg="#002240")
+        joke_gui.iconbitmap("icon.ico")
+        joke_gui.resizable(True, False)
+        j = pyjokes.get_joke()
+        joke = StringVar(joke_gui, value = j)
+        def joke_():
+            import pyttsx3
+            engine = pyttsx3.init()
+            engine.say(j)
+            engine.runAndWait()
+        joke_label = Label(joke_gui, text = "Joke",font=("Cascadia Code", 24), fg="white", bg="#002240").pack()
+        joke_entry = Entry(joke_gui, textvariable = joke, width=120, font=("Cascadia Code", 12), fg="white", bg="#002240", borderwidth=5).pack(fill=X)
+        joke_button = Button(joke_gui, text="Read out loud", font=("Cascadia Code", 14), fg="white", bg="#002240", borderwidth=0, command=joke_).pack()
+        # joke_label = Label(joke_gui, text = "By NoobScience",font=("Cascadia", 16), fg="white", bg="#002240").pack()
+        joke_gui.mainloop()
+    # title_label = Label(root, font=("Cascadia Code", 15), borderwidth=0, fg=fgvar, bg="white", text="NoobNote Dev")
+    # title_label.pack(fill=Y)
 
     scroll_text = Scrollbar(gui,)
     scroll_text.pack(side=RIGHT, fill=Y)
@@ -1297,10 +1379,10 @@ def main():
     text = Text(gui, width=textWidth, height=textHeight, font=(fontvar, sizevar), borderwidth=0,selectbackground=selectbgvar, selectforeground=selectfgvar, undo=True, yscrollcommand=scroll_text.set, xscrollcommand=horizontal_scroll.set, fg=fgvar, bg=bgvar,)
     text.pack()
 
-    menu = Menu(gui)
-    gui.config(menu=menu)
+    menu = Menu(gui,)
+    gui.config(menu=menu,)
 
-    fileMenu = Menu(menu, tearoff=False)
+    fileMenu = Menu(menu, tearoff=False,)
     menu.add_cascade(label="File", menu=fileMenu)
     fileMenu.add_command(label="New", command=lambda: newFile(False))
     #fileMenu.add_command(label="New Window", command=lambda: newWinmain(False))
@@ -1324,8 +1406,11 @@ def main():
     editMenu.add_separator()
     editMenu.add_command(label="Undo", command=text.edit_undo)
     editMenu.add_command(label="Redo", command=text.edit_redo)
-    #editMenu.add_separator()
-    #editMenu.add_command(label="Add Image", command=insert_img)
+    # editMenu.add_separator()
+    # editMenu.add_command(label="Add Image", command=insert_img)
+    editMenu.add_separator()
+    editMenu.add_command(label="Read Out Everything", command=read_all)
+    editMenu.add_command(label="Read Out Selected", command=read_selected)
 
     textFormatMenu = Menu(menu, tearoff=False)
     menu.add_cascade(label="Format", menu=textFormatMenu)
@@ -1394,9 +1479,10 @@ def main():
     toolsMenu.add_command(label="Generate sha256 Hash", command=hash_sha256)
     toolsMenu.add_command(label="Generate md5 Hash", command=hash_md5)
     toolsMenu.add_command(label="Generate sha1 Hash", command=hash_sha1)
-    # toolsMenu.add_separator()
-    # toolsMenu.add_command(label="Edit with Vim", command=vim_)
-    # toolsMenu.add_command(label="Edit with Nano", command=nano_)
+    toolsMenu.add_separator()
+    toolsMenu.add_command(label="Mini Terminal", command=lambda: mini_terminal(False))
+    toolsMenu.add_separator()
+    toolsMenu.add_command(label="Random Joke", command=random_joke)
 
     colorMenu = Menu(menu, tearoff=False)
     menu.add_cascade(label="Color", menu=colorMenu)
@@ -1407,6 +1493,7 @@ def main():
     colorMenu.add_command(label="Light Theme", command=lambda: lightTheme(False))
     colorMenu.add_command(label="Dark Theme", command=lambda: darkTheme(False))
     colorMenu.add_command(label="Relaxing Theme", command=lambda: relaxTheme(False))
+    colorMenu.add_command(label="Hacker Theme", command=hackerTheme)    
 
     aboutMenu = Menu(menu, tearoff=False)
     menu.add_cascade(label="Help", menu=aboutMenu)
@@ -1480,9 +1567,9 @@ def main():
     gui.bind('<Control-N>', newWinmain)
     gui.bind('<Control-q>', quit1)
     gui.bind('<Control-p>', printFile)
-    gui.bind('<Control-t>', qr)
+    gui.bind('<Control-t>', mini_terminal)
     gui.bind('<Control-m>', month_calendar)
-    gui.bind('<Control-y>', year_calendar)
+    gui.bind('<Control-Y>', year_calendar)
     gui.bind('<Control-j>', clock)
     gui.bind('<Control-w>', timeDate)
     gui.bind('<Button-3>', right_click_menu)
