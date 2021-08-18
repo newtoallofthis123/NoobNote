@@ -1,120 +1,88 @@
-<!-- NoobNote Website -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel = "icon" href = "https://github.com/newtoallofthis123/Assets/raw/main/Image/NoobNote/icon.png"
-            type = "image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-<!--     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <title>NoobNote-Love Writing ❤</title>
-  </head>
-  <body style="padding: 0; margin: 0;">
-    <div class="container-fluid" style="border-radius:20px;  padding: 0; margin: 0;">
-      <nav class="navbar navbar-expand-lg navbar-collapse navbar-light bg-black" style="font-size: 16px; background-color: rgb(107, 101, 101);">
-        <img src="https://github.com/newtoallofthis123/Assets/raw/main/Image/NoobNote/icon.png" width="30" height="30" class="img-fuild" style="margin-left: 5px;">
-        <a class="navbar-brand p-sp-5" href="https://newtoallofthis123.github.io/NoobNote" target="_blank" style="font-size: 24px; font-family: Cascadia Code, Consolas, Arial; color: rgb(255, 255, 255); padding-left: 10px;">NoobNote</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active" >
-              <a class="nav-link" href="about/about.html" style="color: rgb(255, 255, 255); padding-right: 30px;" >About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about/download.html" target="_blank" style="color: rgb(255, 255, 255);  padding-right: 30px;">Download</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about/new.html" target="_blank" style="color: rgb(255, 255, 255);  padding-right: 30px;">New Update!</a>
-            </li>
-            <span class="navbar-text" style="color: white;  padding-right: 30px;">
-              |
-            </span>
-            <li class="nav-item">
-              <a class="nav-link" href="https://github.com/newtoallofthis123/NoobNote" target="_blank" style="color: rgb(255, 255, 255);  padding-right: 30px;">Github</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="mailto: noobscience123@gmail.com" target="_blank" style="color: rgb(255, 255, 255);  padding-right: 30px;">Contact</a>
-            </li>
-          </ul>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NoobNote is a simple alternative to Notepad written in python using the tkinter module. NoobNote aims to add many usefull features while still maintaining the nostalgia of Notepad">
+    <meta name="keywords" content="Notepad, NoobNote, python Notepad, tkinter notepad, DevNote, LiteNote">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="assets/icon.ico" type="image/x-icon">
+    <title>NoobNote - ❤️ Writing</title>
+</head>
+<nav>
+    <ul>
+        <img src="assets/icon.ico" alt="NoobNote icon" style="position: relative; top: 5px;">
+        <li class="nav_item"><a href="" class="nav_title">NoobNote</a></li>
+        <div class="nav">
+            <li class="nav_item"><a href="pages/about.html" class="nav_link">About</a></li>
+            <li class="nav_item"><a href="pages/download.html" class="nav_link">Download</a></li>
+            <li class="nav_item"><a href="pages/new.html" class="nav_link">What's New</a></li>
+            <li class="nav_item"><a href="#" class="nav_link">|</a></li>
+            <li class="nav_item"><a href="https://github.com/newtoallofthis123/NoobNote" class="nav_link">Github</a></li>
+            <li class="nav_item"><a href="mailto:noobscience123@gmail.com" class="nav_link">Contact</a></li>
         </div>
-      </nav>
-      <div style="background-image: url('https://github.com/newtoallofthis123/Assets/raw/main/Image/bg4.jpg');">
-        <div style="text-align: center;"><br>
-          <h3 class="heading" style="color: white; background-color: rgb(114, 117, 100); margin-left: 40%; margin-right: 40%;">Love Writing ❤</h3><br>
-          <a href="about/download.html" target="_blank"><button type="button" class="btn btn-primary btn-lg">Download</button></a>
-        </div>
+    </ul>
+</nav>
+<body>
+    <div style="background-image: linear-gradient(to right, rgba(255, 174, 0, 0.815), rgba(255, 0, 43, 0.877));">
+        <h1 class="middle_attraction" id="animation"></h1>
         <div style="text-align: center;">
-          <a href="https://github.com/newtoallofthis123/Assets/raw/main/Image/NoobNote/LiteNote.png" target="_blank"><img src="https://github.com/newtoallofthis123/Assets/raw/main/Image/NoobNote/LiteNote.png" width=70% height=70% class="img-fuild" ></a><br><br>
+            <button class="download_btn"><a href="pages/download.html" class="download_link">Download for your platform</a></button>
         </div>
-      </div>
-      <div class="jumbotron">
-        <h1 class="display-3" style="text-align: center;">Features</h1>
-        <hr class="my-2">
-        <li class="lead" style="text-align: center;">
-          <p>⚡ Light Weight and fast</p>
-          <p>❤ Buit on Open Source Standards</p>
-          <p>💻 Awesome to use</p>
-          <p>🖊 Neat and Customizable User Interface</p>
-          <p><i class="material-icons">code</i> Built Purely with Python</p>
-          <p>🔒 Secure and Private</p>
-          <p>✒ Ideal for Writers and Brainstroming</p>
-          <p>📓 Comes in many Flavours: Lite, Vanilla, Dev</p>
-        </li>
-        <hr class="my-2">
-        <div style="text-align: center;">
-          <p>Play Some <a href="https://pixabay.com/music/future-bass-the-future-bass-5024/" target="_blank">Music</a></p>
-          <audio controls autoplay width="60">
-            <source src="assets/the-future-bass-5024.ogg" type="audio/ogg">
-            <source src="assets/the-future-bass-5024.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-          </audio>
+        <div style="text-align: center; margin-top: 20px; padding-bottom: 20px;">
+            <div class="img_slide_show">
+                <div class="display_none fade"><img src="assets/images/example1.gif" style="width:100%" id="img"></div>
+                <div class="display_none fade"><img src="assets/images/example2.gif" style="width:100%" id="img"></div>
+                <div class="display_none fade"><img src="assets/images/example3.gif" style="width:100%" id="img"></div>
+            </div>
         </div>
-      <hr class="my-2">
-        <div class="lead">
-          <a href="about/about.html">About</a>
-          <a href="about/download.html">Download</a>
-          <a href="about/new.html">New Update!</a>
-        </div>
-      </div>
     </div>
-  </body>
-  <footer>
-    <div class="container-fluid" style="padding: 0; margin: 0;">
-      <nav class="navbar navbar-expand-lg navbar-light bg-grey" style="font-size: 16px; background-color: rgb(107, 101, 101);">
-        <a class="navbar-brand" href="https://newtoallofthis123.github.io/About" target="_blank" style="font-size: 18px; color: white;">&copy NoobScience 2021</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="font-size: 14px; ">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="https://newtoallofthis123.github.io/About/docs/projects.html" target="_blank" style="color: rgb(255, 255, 255);">Projects</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://newtoallofthis123.github.io/NSBlog" target="_blank" style="color: rgb(255, 255, 255);">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://newtoallofthis123.github.io/About/docs/about.html" target="_blank" style="color: rgb(255, 255, 255);">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://github.com/newtoallofthis123" target="_blank" style="color: rgb(255, 255, 255);">Github</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://www.youtube.com/channel/UCbYWy7rhUhToM3tbw-Z3SnQ" target="_blank" style="color: rgb(255, 255, 255);">Youtube</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="mailto: noobscience123@gmail.com" target="_blank" style="color: rgb(255, 255, 255);">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+    <h1 class="content" style="text-align: center; font-size: 36px; padding-bottom: 20px;">NoobNote Features</h1>
+    <div class="div_features">
+        <div class="div_left"><h1 class="title_2" style="padding-bottom: 10px;">⚡ Light Weight and Fast</h1><p class="content" style="padding-bottom: 20px;">NoobNote and all it's derivatives are light weight and easy to use,<br>It is so Light and Fast, you can probably use it on a toaster.</p></div>
+        <div class="div_right"><h1 class="title_2" style="padding-bottom: 10px;">❤️  Built on Open Source Standards</h1><p class="content" style="padding-bottom: 20px;">NoobNote is open source and all it's code can be available from it's <a href="https://github.com/newtoallofthis123/NoobNote" class="link">github</a> repository.<br> NoobNote is registered under the <a href="https://newtoallofthis123.github.io/license" class="link">MIT License</a>.</p></div>
     </div>
-  </footer>
+    <div class="div_features">
+        <div class="div_left"><h1 class="title_2" style="padding-bottom: 10px;">💻 Awesome to use</h1><p class="content" style="padding-bottom: 20px;">NoobNote is made to have tons of features while at the same time <br> preserving the Notepad Nostalgia, It will surely remind you of the days gone by.</p></div>
+        <div class="div_right"><h1 class="title_2" style="padding-bottom: 10px;">🗃️ Tons of New Features to enjoy</h1><p class="content" style="padding-bottom: 20px;">NoobNote has tons of Features and some of them are very useful.<br>So, no matter who you are, there is sure to be a feature you like and enjoy using.</p></div>
+    </div>
+    <div class="div_features">
+        <div class="div_left"><h1 class="title_2" style="padding-bottom: 10px;">🐍 Built with Python</h1><p class="content" style="padding-bottom: 20px;">NoobNote is built with python using the tkinter module which is quite handy.<br>I actually wrote NoobNote to learn tkinter and get familiar with python</p></div>
+        <div class="div_right"><h1 class="title_2" style="padding-bottom: 10px;">✍️ Smooth Writing Experince</h1><p class="content" style="padding-bottom: 20px;">NoobNote is fast and offers a completely customizable and smooth writing experince <br> for writers who just want a nostalgic way to write. Write Away.</p></div>
+    </div>
+    <div class="div_features">
+        <div class="div_left"><h1 class="title_2" style="padding-bottom: 10px;">🔒 Secure and Private</h1><p class="content" style="padding-bottom: 20px;">Everything you do on NoobNote is local and the only internet requests <br> it makes are to <a href="https://docs.github.com/en/github/site-policy/github-privacy-statement" class="link">github</a> (to check updates) and <a href="https://tinyurl.com/app/privacy-policy" class="link">tinyurl</a> (if shortener is used). </p></div>
+        <div class="div_right"><h1 class="title_2" style="padding-bottom: 10px;">🍕 Comes in many Flavours</h1><p class="content" style="padding-bottom: 20px;">NoobNote comes in 4 flavours : Lite, Dev, Vanilla and Compact. All based on NoobNote. <br> More about them <a href="page/flavours.html" class="link">here</a></p></div>
+    </div>
+    <div class="div_features">
+        <div class="div_left"><h1 class="title_2" style="padding-bottom: 10px;">⬇️ Versions</h1><p class="content" style="padding-bottom: 20px;">NoobNote is built with python, hence it is highly stable and secure.<br>There are no major vurnebilities and as all versions are safe, you can use any.</p></div>
+        <div class="div_right"><h1 class="title_2" style="padding-bottom: 10px;">💰 Contribute</h1><p class="content" style="padding-bottom: 20px;">NoobNote is free and open source, you are free to use it. However, if you want <br> to contribute, leave a star on my <a href="https://github.com/newtoallofthis123" class="link">github</a> page or subscribe to my <a href="https://www.youtube.com/channel/UCbYWy7rhUhToM3tbw-Z3SnQ" class="link">YouTube</a> channel</p></div>
+    </div>
+    <div style="text-align: center;">
+        <h1 class="content" style="text-align: center; font-size: 36px; padding-bottom: 20px;">Prehaps Some <a href="https://www.youtube.com/watch?v=FA9vqPWR0Ks" class="link" style="font-size: 32px;">Music</a>?</h1>
+        <audio autoplay controls width="80">
+            <source src="assets/audio/Diviners,Azerion-Feelings.ogg" type="audio/ogg">
+            <source src="assets/audio/Diviners,Azerion-Feelings.mp3" type="audio/mpeg">
+          Your browser does not support the video tag.
+        </audio>
+    </div>
+    <div style="text-align: center; padding-bottom: 20px;">
+        <button class="download_btn"><a href="pages/video.html" class="download_link">Watch this Video for More Info</a></button>
+    </div>
+    <h1 class="title_2" style="margin-bottom: 12px;">Hope you enjoy using NoobNote 😊</h1>
+    <hr style="color: white;">
+    <script src="brain.js"></script>
+</body>
+<footer>
+    <ul>
+        <li class="nav_item"><a href="https://newtoallofthis123.github.io/About" class="nav_link" target="_blank" style="font-size: 24px;">©NoobScience</a></li>
+        <div class="nav" style="padding-left: 55%;">
+            <li class="nav_item"><a href="https://github.com/newtoallofthis123" class="nav_link">Github</a></li>
+            <li class="nav_item"><a href="https://github.com/newtoallofthis123?tab=repositories" class="nav_link">Projects</a></li>
+            <li class="nav_item"><a href="https://www.youtube.com/channel/UCbYWy7rhUhToM3tbw-Z3SnQ" class="nav_link">Youtube</a></li>
+            <li class="nav_item"><a href="mailto:noobscience123@gmail.com" class="nav_link">Contact</a></li>
+        </div>
+    </ul>
+</footer>
 </html>

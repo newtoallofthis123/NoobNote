@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NoobNote is a simple alternative to Notepad written in python using the tkinter module. NoobNote aims to add many usefull features while still maintaining the nostalgia of Notepad">
+    <meta name="keywords" content="Notepad, NoobNote, python Notepad, tkinter notepad, DevNote, LiteNote">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="assets/icon.ico" type="image/x-icon">
+    <title>📓 About NoobNote</title>
+</head>
+<nav>
+    <ul>
+        <img src="assets/icon.ico" alt="NoobNote icon" style="position: relative; top: 5px;">
+        <li class="nav_item"><a href="https://newtoallofthis123.github.io/NoobNote" class="nav_title">NoobNote</a></li>
+        <div class="nav">
+            <li class="nav_item"><a href="flavours.html" class="nav_link">Flavours</a></li>
+            <li class="nav_item"><a href="download.html" class="nav_link">Download</a></li>
+            <li class="nav_item"><a href="new.html" class="nav_link">What's New</a></li>
+            <li class="nav_item"><a href="#" class="nav_link">|</a></li>
+            <li class="nav_item"><a href="https://github.com/newtoallofthis123/NoobNote" class="nav_link">Github</a></li>
+            <li class="nav_item"><a href="mailto:noobscience123@gmail.com" class="nav_link">Contact</a></li>
+        </div>
+    </ul>
+</nav>
+<body>
+    <div class="content_div" id="about">
+        <h1 class="title_3">About</h1>
+        <p class="content">NoobNote is a Simple Notepad which is written purely in python. NoobNote offers a simple and intuitve interface which is ideal for Writers and BrainStroming Sessions. Every Flavour of NoobNote comes as a python file which can be launched from the terminal or a direct executable which is included in the zip file.</p>
+    </div>
+    <div class="content_div" id="philosophy">
+        <h1 class="title_3">Philosophy</h1>
+        <p class="content">There are many alternatives to Microsoft Notepad and the best one out there in my opinion is Notepad++, but there are no alternatives to Notepad which actually look and feel like it. NoobNote aims to replace that. NoobNote has many features like a runner, find function, a terminal, code runner, settings gui, all of this while maintaining that Notepad nostalgia. NoobNote comes in Three Forms, NoobNote-Lite for beginners, NoobNote-Dev for Normal Users and NoobNote is just vanilla. NoobNote is available across many platforms, since as long your platform supports python, you can 'pip install noobnote' and use it. NoobNote comes as a handy .exe for windows are is frequently updated. Very usefull, nice to use and just overall works. NoobNote is surely worth a <a href="download.html" class="link">try</a>.</p>
+    </div>
+    <div class="content_div" id="flavours">
+        <h1 class="title_3">NoobNote and it's Flavours</h1>
+        <p class="content">NoobNote is not in it's self everything. NoobNote is just a base model on top of which, if you know a little python, can add any number of features you want. NoobNote is current in v.1.1, the most stable version. Whereas the falvours of NoobNote, namely DevNote and LiteNote are currently in v.3.1. All the Features talked below are only applicable to NoobNote derivatives that I developed, namely DevNote and LiteNote, but not NoobNote in itself. To know more about this, go <a href="flavours.html" class="link">here</a>.</p>
+    </div>
+    <div class="content_div" id="installation">
+        <h1 class="title_3" >Installation and Usage</h1>
+        <p class="content">NoobNote and all it's derivatives are written in python using the tkinter module. NoobNote does come with <a href="https://github.com/newtoallofthis123/NoobNote/releases" class="link">binaries</a> which are kindly provided by <a href="https://newtoallofthis123.github.io/ShadowGuy" class="link">shadowguy</a>. Vanilla NoobNote can also be downloaded using <a href="https://pypi.org/project/NoobNote/" class="link">pip install</a>. NoobNote can instead also be well normally used as a python script as shown below, but if you don't like the terminal, you are recommended to use the binaries provided for Windowsx86 and Windowsx64. If you are on Linux or Macos, you can contribute by <a href="#building" class="link">building</a> them on your platform and <a href="mailto:noobscience123@gmail.com" class="link">informing</a> me. However for now, if you are on Linux or Macos, you can use the raw python script or compile it for your platform, however, if you do, inform me so I can link you binary for others to use.</p>
+        <div style="text-align: center;"><img src="assets/images/terminal.gif" alt="Open NoobNote from the Terminal" class="content_img"></div>
+    </div>
+    <div class="content_div" id="building">
+        <h1 class="title_3">Building and Compiling</h1>
+        <p class="content">Building and Compiing NoobNote is fairly easy, There are many ways to compile a python script, as NoobNote is written in python, you can use any of these popular services to compile it into a binary for your platform. You can use any of these services <a href="https://www.pyinstaller.org/" class="link">pyinstaller</a>, <a href="https://nuitka.net/" class="link">nuitka</a>, <a href="https://winpython.github.io/" class="link">winpython</a></p>
+        <p class="content" style="margin-top: 12px; margin-bottom: 12px;"><b><u>Steps to compile</u></b></p>
+        <li class="content">Clone the github repository</li>
+        <div class="code_div"><p class="code">git clone https://github.com/newtoallofthis123/NoobNote.git</p></div>
+        <li class="content">Switch to the NoobNote Directory</li>
+        <div class="code_div"><p class="code">cd NoobNote</p></div>
+        <li class="content">Compilation with pyinstaller</li>
+        <div class="code_div"><p class="code">pyinstaller -w - i "icon.ico" -n "NoobNote"</p></div>
+        <li class="content">Compilation with nuitka (recommended)</li>
+        <div class="code_div"><p class="code">python -m nuitka --standalone --windows-disable-console --windows-icon-from-ico="icon.ico" --windows-company-name="NoobScience" --windows-product-name="NoobNote" --windows-file-version=0.1  --windows-product-version=0.1 --windows-file-description="My Take on NotePad" --plugin-enable=tk-inter --python-arch="x86" NoobNote.py</p></div>
+        <li class="content">NooobNote.exe will be generated in the 'NoobNote.dist' directory, paass in the argument --onefile to have a onefile executabe.</li>
+        <div style="text-align: center;"><img src="assets/images/chandler_bing_how_it's_done.gif" alt="Chander Bing That's How it's done GIF" class="content_img"></div>
+    </div>
+    <div class="content_div" id="license">
+        <h1 class="title_3">License and Attribution</h1>
+        <p class="content">NoobNote and all it's flavours are registered under the <a href="https://newtoallofthis123.github.io/license" class="link">MIT License</a>, hence you are free to use it as you like and in any sort of software you are making, either open or closed source, but I am not responsible for your product. If you do use NoobNote in your product, it would be very kind of you to attribute my name and my website on your 3rd party software page. You however are not required to. If you want to support me, see <a href="#contribute" class="link">contribute</a>. Hope you enjoy using NoobNote.</p>
+    </div>
+    <div class="content_div" id="contribute">
+        <h1 class="title_3">Contribute</h1>
+        <p class="content">If you like NoobNote and my work, be sure to leave star on my <a href="https://github.com/newtoallofthis123" class="link">Github</a> page or subscribe to my <a href="https://www.youtube.com/channel/UCbYWy7rhUhToM3tbw-Z3SnQ" class="link">YouTube</a> Channel. If you want to contribute towards NoobNote's development, <a href="mailto:noobscience123@gmail.com" class="link">contact</a> me or <a href="https://github.com/newtoallofthis123/NoobNote" class="link">fork</a> NoobNote and send me a pull request.</p>
+    </div>
+    <div style="margin-top: 20px;">
+        <div class="content_div" style="text-align: center;">
+            <img src="assets/images/chandler_bing_convinced.gif" alt="Chandler Bing Convinced Gif" class="content_img">
+        </div>
+        <div style="text-align: center;">
+            <h1 class="title_3" style="text-decoration: none;">Now all that is left is to <button class="download_btn" style="margin-left: 12px; margin-bottom: 12px;"><a href="download.html" class="download_link">Download for your platform</a></button></h1>
+        </div>
+    </div>
+    <hr style="color: white; margin-top: 20px;">
+</body>
+<footer>
+    <ul>
+        <li class="nav_item"><a href="https://newtoallofthis123.github.io/About" class="nav_link" target="_blank" style="font-size: 24px;">©NoobScience</a></li>
+        <div class="nav" style="padding-left: 55%;">
+            <li class="nav_item"><a href="https://github.com/newtoallofthis123" class="nav_link">Github</a></li>
+            <li class="nav_item"><a href="https://github.com/newtoallofthis123?tab=repositories" class="nav_link">Projects</a></li>
+            <li class="nav_item"><a href="https://www.youtube.com/channel/UCbYWy7rhUhToM3tbw-Z3SnQ" class="nav_link">Youtube</a></li>
+            <li class="nav_item"><a href="mailto:noobscience123@gmail.com" class="nav_link">Contact</a></li>
+        </div>
+    </ul>
+</footer>
+</html>
