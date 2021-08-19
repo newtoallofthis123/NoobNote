@@ -1,5 +1,5 @@
 # Application Name: NoobNote-Lite
-# Version: v.2.1 Lite
+# Version: v.4.1 Lite
 # Author: NoobScience
 # Author Website: https://newtoallofthis123.github.io/About
 # Application Docs and Trobule Shooting Website: https://newtoallofthis123.github.io/NoobNote
@@ -1366,6 +1366,10 @@ def main():
         import tinyurl
         tinyurl.shortener()
 
+    def cal(e):
+        import cal
+        cal.cal_func()
+
     def read_selected():
         import pyttsx3
         engine = pyttsx3.init()
@@ -1601,6 +1605,8 @@ def main():
     menu.add_cascade(label="Tools", menu=toolsMenu)
     toolsMenu.add_command(label="Qr-Code Generator", command=lambda: qr(False))
     toolsMenu.add_command(label="Url Shortener", command=lambda: shortener(False))
+    toolsMenu.add_command(label="Calculator", command=lambda: cal(False))
+    toolsMenu.add_separator()
     toolsMenu.add_command(label="Insert Month Calendar", command=lambda: month_calendar(False))
     toolsMenu.add_command(label="Insert Year Calendar", command=lambda: year_calendar(False))
     toolsMenu.add_separator()
